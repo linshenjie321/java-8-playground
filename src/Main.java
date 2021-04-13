@@ -77,6 +77,12 @@ public class Main {
 		List<Integer> listOfIntegers = Arrays.asList(1,2,3);
 		Integer reduced = listOfIntegers.stream().reduce(30, (a, b) -> a + b);
 		System.out.println(reduced);
+		
+		List<String> listOfStringNumbers = Arrays.asList("1","2","3");
+		int[] convertedIntArray = listOfStringNumbers.stream().mapToInt(str -> Integer.parseInt(str)).toArray();
+		//note we cannot directly use Arrays.asList because int[] is an array of primitive types, so we have teo use the following to box it first into Integer type
+		List<Integer> listOfIntegersAgain = Arrays.stream(convertedIntArray).boxed().collect(Collectors.toList());
+		listOfIntegersAgain.stream().forEach(a -> System.out.println(a));
 	}
 
 }
