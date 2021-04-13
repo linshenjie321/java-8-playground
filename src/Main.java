@@ -2,7 +2,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -56,7 +59,18 @@ public class Main {
 		Stream<Path> stream = uris.stream().map(uri -> Paths.get(uri));
 		stream.forEach(e -> System.out.println(e));
 		
-
+		//below two demonstrating the difference between map and flatMap
+		Optional.of("string").map(s -> Optional.of("String"));
+		Optional.of("string").flatMap(s -> Optional.of("STRING"));
+		
+		List<List<String>> listOfListString = Arrays.asList(
+				Arrays.asList("a","b","c"),
+				Arrays.asList("e","f","g")
+				);
+		
+		//see below flat map helps us convert the multi structured list of list of string into a list of string
+		List<String> flatListString = listOfListString.stream().flatMap(Collection::stream).collect(Collectors.toList());
+		System.out.println(flatListString);
 	}
 
 }
