@@ -69,8 +69,14 @@ public class Main {
 				);
 		
 		//see below flat map helps us convert the multi structured list of list of string into a list of string
+		//we also demonstrated here the collectors
 		List<String> flatListString = listOfListString.stream().flatMap(Collection::stream).collect(Collectors.toList());
 		System.out.println(flatListString);
+		
+		//reduction examples
+		List<Integer> listOfIntegers = Arrays.asList(1,2,3);
+		Integer reduced = listOfIntegers.stream().reduce(30, (a, b) -> a + b);
+		System.out.println(reduced);
 	}
 
 }
