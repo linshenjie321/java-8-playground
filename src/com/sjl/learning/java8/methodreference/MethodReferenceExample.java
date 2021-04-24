@@ -11,10 +11,24 @@ public class MethodReferenceExample {
 		String username = userInput.nextLine();
 		methodRef.greeting(username);
 		userInput.close();
+		
+		// Method referencing an instance method
+		MethodReferenceExample methodRefInstance = new MethodReferenceExample();
+		MethodReferenceExampleInterface saySomethingInstance = methodRefInstance::greetingsNonStatic;
+		saySomethingInstance.greeting("Sammy");
+	}
+	
+	public MethodReferenceExample() {
+		System.out.println("Constructing an instance of MethodReferenceExample...");
 	}
 	
 	public static void greetings(String name) {
-		System.out.println("Hello, " + name + " how are you?");
+		System.out.println("Hello, " + name + " how are you? -- from static method");
+	}
+	
+	
+	public void greetingsNonStatic(String name) {
+		System.out.println("Hello, " + name + " how are you? -- from instance method");
 	}
 	
 }
