@@ -1,3 +1,4 @@
+package com.sjl.learning.java8.methodreference;
 import java.util.Scanner;
 
 public class MethodReferenceExample {
